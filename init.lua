@@ -1,7 +1,3 @@
-local function setInputSource(appName, inputSource)
-    hs.keycodes.setLayout(inputSource)
-end
-
 local englishApps = {
       ["ターミナル"] = true,
       ["Emacs"] = true,
