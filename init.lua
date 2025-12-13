@@ -1,6 +1,7 @@
 local englishApps = {
       ["ターミナル"] = true,
       ["Emacs"] = true,
+      ["emacs"] = true,
       ["WezTerm"] = true,
 }
 
@@ -27,22 +28,22 @@ local appWatcher = hs.application.watcher.new(function(appName, eventType, appOb
         local now = hs.timer.secondsSinceEpoch()
 
         if now - lastSwitch < switchDelay then
-            print("Skipped:", appName)
+            print("Skipped: ", appName)
             return
         end
 
         lastSwitch = now
-        print("Switched to:", appName)
+        print("Switched to: ", appName)
 
         if englishApps[appName] then
-            print("-> English", appName)
+            print("-> English ", appName)
             pressKeyViaAppleScript(102) -- 102 英数
         elseif japaneseApps[appName] then
-            print("-> Japanese", appName)
+            print("-> Japanese ", appName)
             pressKeyViaAppleScript(104) -- 104 かな
         else
-            print("Other app:", appName)
-	end
+            print("Other app: ", appName)
+        end
     end
 end)
 
